@@ -39,11 +39,9 @@ class _ExampleState extends State<Example> {
   bool granted = false;
   DateTime? callStartTime;
 
-  // Function to request permission for phone access
   Future<bool> requestPermission() async {
     var status = await Permission.phone.request();
 
-    // Handling different permission states
     return switch (status) {
       PermissionStatus.denied ||
       PermissionStatus.restricted ||
@@ -64,7 +62,6 @@ class _ExampleState extends State<Example> {
     });
   }
 
-  // Function to listen to the phone state stream
   void setStream() {
     PhoneState.stream.listen((event) {
       setState(() {
@@ -112,7 +109,6 @@ class _ExampleState extends State<Example> {
     );
   }
 
-  // Function to format the call duration to seconds
   String formatDuration() {
     final duration = DateTime.now().difference(callStartTime!);
 
